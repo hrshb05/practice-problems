@@ -16,32 +16,24 @@ public:
             return NULL;
         }
         int fl =0;
-        ListNode* f = head;
-        ListNode* s = head;
+        ListNode* fast = head;
+        ListNode* slow = head;
         for(int i =0;i<n;i++)
         {
            
-            f = f->next;
+            fast = fast->next;
         }
-        ListNode* h = head;
-        if(f == NULL )
+        // ListNode* h = head;
+        if(fast == NULL )
                 return head->next;
-        while(f!= NULL)
+           while(fast!=NULL && fast->next!=NULL)
         {
-            h = s;
-            s = s->next;
-            f = f->next;
+            slow=slow->next; fast=fast->next;
         }
-        
- 
-        
-        
-            h->next = s->next;
-            // s = s->next;
-            delete s;
-        
-        
+        slow->next = slow->next->next;
+
         return head;
+    
         
     }
 };
