@@ -1,25 +1,29 @@
 class Solution {
 public:
-
-       int reverse(int x) {
-        if (x == INT_MIN) {
+    int reverse(int x) {
+        int g =0;
+        // int rev = 0;/
+        int h = x;
+        if(h == INT_MIN)
             return 0;
+        if(h<0)
+        {
+            g =1;
+            h = -h;
         }
         
-        int change = x < 0 ? -1 : 1;
-        x = abs(x);
-        
-        int reversed = x % 10;
-        x /= 10;
-        while (x != 0) {
-            if (reversed > INT_MAX/10) {
-                return 0;
-            }
+        int rev = h%10;
+            h /=10;
+        while(h>0)
+        {
             
-            reversed = reversed * 10 + x % 10;
-            x /= 10;
+            if(rev > INT_MAX/10)
+                return 0;
+            rev = rev*10 +h%10;
+            h/=10;
         }
-        
-        return change * reversed;
+        if(g==1)
+            return -rev;
+        return rev;
     }
 };
