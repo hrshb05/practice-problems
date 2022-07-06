@@ -1,30 +1,65 @@
-
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
 class Solution {
 public:
     ListNode* reverseKGroup(ListNode* head, int k) {
-        if(head==NULL || k==1){
-            return head;
+         ListNode* f = head;
+         ListNode* pv = NULL;
+        bool j = false;
+        int g =0,t=0;
+        ListNode* u =head;
+        while(u!=NULL)
+        {
+            u = u->next;
+            g++;
         }
-        ListNode *dummy = new ListNode(0);
-        dummy-> next = head;
-        ListNode *pre = dummy, *curr = dummy, *nex = dummy;
-        int count = 0;
-        while(curr->next!=NULL){
-            curr=curr->next;
-            count++;
-        }
-        while(count>=k){
-            curr = pre->next;
-            nex = curr->next;
-            for(int i=1; i<k;i++){
-                curr->next= nex->next;
-                nex -> next = pre->next;
-                pre->next = nex;
-                nex = curr->next;
+        // cout<<g<<endl;
+        ListNode* v;
+        while(f!=NULL)
+        {
+           v = f;
+            int c =0;
+             ListNode* n = NULL;
+             ListNode* p = NULL;
+            
+            while(c<k && f!=NULL )
+            {
+                // if(g<k)
+                // {
+                n = f->next;
+                f->next = p;
+                p = f;
+                f = n;
+                // }
+                c++;
             }
-            pre = curr;
-            count -=k;
+            if(!j){
+            head = p;
+                j = true;
+            }
+            else
+            {
+                pv->next = p;
+            }
+            pv = v;
+            
+          
+            g = g-k;
+             if(g<k)
+           {
+                 pv->next = f;
+              
+                break;
+           } 
         }
-        return dummy->next;
+        return head;
     }
 };
