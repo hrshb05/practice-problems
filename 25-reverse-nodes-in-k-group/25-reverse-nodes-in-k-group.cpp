@@ -32,13 +32,10 @@ public:
             
             while(c<k && f!=NULL )
             {
-                // if(g<k)
-                // {
                 n = f->next;
                 f->next = p;
                 p = f;
                 f = n;
-                // }
                 c++;
             }
             if(!j){
@@ -50,13 +47,10 @@ public:
                 pv->next = p;
             }
             pv = v;
-            
-          
             g = g-k;
              if(g<k)
            {
-                 pv->next = f;
-              
+                pv->next = f;
                 break;
            } 
         }
