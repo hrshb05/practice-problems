@@ -44,7 +44,7 @@ public:
         {
             if(h== g)
             {
-                if(h->val == g->val)
+                // if(h->val == g->val)
                     return h;
                 // return h->next;
             }
